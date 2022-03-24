@@ -1,26 +1,30 @@
 #include "main.h"
-/**
- * _strcmp - compares two strings
- * @s1: string 1
- * @s2: string 2
- * Return: 0 if matching, and ns1 - ns2 if not matching
-*/
 
-int _strcmp(char *s1, char *s2)
+/**
+ * rot13 - encodes a string using rot13
+ * @c: string
+ * Return: encoded string
+ */
+
+char *rot13(char *c)
 {
 int i;
 
-/**
- * We have reached the end of S1 OR we have reached the end of S2
- * 
-*/
+char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+char *str = c;
 
-for (i = 0; s1[i] != '\0' || s2[i] != '\0'; i++)
+while (*c)
 {
-	if (s1[i] != s2[i])
-	{
-		return (s1[i] - s2[i]);
-	}
+for (i = 0; i <= 52;  i++)
+{
+if (*c == rot13[i])
+{
+*c = ROT13[i];
+break;
 }
-return (0);
+}
+c++;
+}
+return (str);
 }
